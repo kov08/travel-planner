@@ -1,0 +1,26 @@
+type TravelConnection {
+    id: ID!
+    source: String!
+    destination: String!
+    cost: Float!
+    time: Float!
+    mode: String
+}
+
+type Query {
+    getAllConnections: [TravelConnection]
+}
+
+type Mutation {
+    deleteConnection(id: ID!): Boolean
+
+    addConnection( 
+        source: String!
+        destination: String!
+        cost: Float!
+        time: Float!
+        mode: String!
+    ): TravelConnection
+	
+}
+

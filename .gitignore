@@ -1,0 +1,41 @@
+################################
+# OS
+################################
+.DS_Store
+Thumbs.db
+
+################################
+# IDEs / Editors
+################################
+.idea/
+.vscode/
+*.iml
+
+# Eclipse / STS
+.metadata/
+.project
+.classpath
+.settings/
+.recommenders/
+
+################################
+# Java / Spring Boot
+################################
+*.class
+target/
+bin/
+*.log
+
+################################
+# Node / React
+################################
+node_modules/
+build/
+dist/
+coverage/
+
+################################
+# Environment files
+################################
+.env
+.env.*
