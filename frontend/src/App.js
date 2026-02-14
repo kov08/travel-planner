@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import LeftPanel from "./controllers/leftPanel";
+import RightPanel from "./controllers/rightPanel";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
         <LeftPanel />
       </div>
       <div className="right">
-        <h3>Route Calculation (Coming Soon)</h3>
+        <RightPanel />
       </div>
     </div>
   );

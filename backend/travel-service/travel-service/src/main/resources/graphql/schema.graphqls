@@ -24,3 +24,22 @@ type Mutation {
 	
 }
 
+enum OptimizationCriteria {
+    COST
+    TIME
+}
+
+type OptimalPathResult {
+    path: [String!]!
+    totalCost: Float!
+    totalTime: Float!
+}
+
+extend type Query {
+    findOptimalPath(
+        source: String!
+        destination: String!
+        criteria: OptimizationCriteria!
+    ): OptimalPathResult
+}
+

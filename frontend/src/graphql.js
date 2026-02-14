@@ -38,3 +38,21 @@ export const DELETE_CONNECTION = gql`
     deleteConnection(id: $id)
   }
 `;
+
+export const FIND_OPTIMAL_PATH = gql`
+  query FindOptimalPath(
+    $source: String!
+    $destination: String!
+    $criteria: OptimizationCriteria!
+  ) {
+    findOptimalPath(
+      source: $source
+      destination: $destination
+      criteria: $criteria
+    ) {
+      path
+      totalCost
+      totalTime
+    }
+  }
+`;
