@@ -5,8 +5,8 @@ Microservices-based Travel Planner built with:
 - Frontend: React, Apollo Client, GraphQL
 - Backend: Java 21, Spring Boot 3, Spring GraphQL, JPA, Hibernate
 - Database: PostgreSQL
-- Messaging (upcoming): Apache Kafka
-- Cache (upcoming): Redis
+- Messaging : Apache Kafka
+- Cache : Redis
 - Containerization: Docker
 
 ## Features
@@ -27,8 +27,13 @@ backend/ → Spring Boot services
 2. Run backend (Spring Boot)
 3. Run frontend (npm start)
 
-## Upcoming
+## Backend Microservices
 
-- Route optimization using Dijkstra
-- Kafka-based email notifications
-- Redis caching
+- travel-service (GraphQL + Redis + PostgreSQL)
+- email-service (Kafka consumer notification service)
+
+Run Order:
+
+1. Start Kafka + Zookeeper
+2. Start travel-service (Port 8080)
+3. Start email-service (Port 8082)

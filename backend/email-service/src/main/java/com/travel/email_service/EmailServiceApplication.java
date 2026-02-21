@@ -1,4 +1,4 @@
-package com.travel.travel_service;
+package com.travel.email_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.kafka.annotation.EnableKafka;
 
 @SpringBootApplication
 @EnableKafka
-public class TravelServiceApplication {
+public class EmailServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TravelServiceApplication.class, args);
+		SpringApplication.run(EmailServiceApplication.class, args);
 	}
 
 }

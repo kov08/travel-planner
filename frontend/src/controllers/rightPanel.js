@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useLazyQuery } from "@apollo/client/react";
 import { FIND_OPTIMAL_PATH } from "../graphql";
+import { useEffect } from "react";
+import { Client } from "@stomp/stompjs";
+import SockJS from "sockjs-client";
 
 function RightPanel() {
   const [form, setForm] = useState({
@@ -8,6 +11,7 @@ function RightPanel() {
     destination: "",
     criteria: "COST",
   });
+  const [emailMessage, setEmailMessage] = useState("");
 
   const [findPath, { data, loading, error }] = useLazyQuery(FIND_OPTIMAL_PATH);
 
@@ -20,6 +24,28 @@ function RightPanel() {
       },
     });
   };
+
+  useEffect(() => {
+    const socket = new SockJS("http://localhost:8080/ws");
+
+    const client = new Client({
+      webSocketFactory: () => socket,
+      reconnectDelay: 5000,
+      onConnect: () => {
+        console.log("Connected to WebSocket");
+
+        client.subscribe("/topic/email-status", (message) => {
+          setEmailMessage(message.body);
+        });
+      },
+    });
+
+    client.activate();
+
+    return () => {
+      client.deactivate();
+    };
+  }, []);
 
   return (
     <>
@@ -62,6 +88,19 @@ function RightPanel() {
           <p>
             <strong>Total Time:</strong> {data.findOptimalPath.totalTime}
           </p>
+        </div>
+      )}
+      {emailMessage && (
+        <div
+          style={{
+            marginTop: "20px",
+            padding: "10px",
+            border: "2px solid green",
+            backgroundColor: "#2b8b2b",
+          }}
+        >
+          <h4>Email Service Status</h4>
+          <p>{emailMessage}</p>
         </div>
       )}
     </>

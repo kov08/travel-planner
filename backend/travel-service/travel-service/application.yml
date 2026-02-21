@@ -18,6 +18,9 @@ spring:
 
   logging: level.org.hibernate.type.descriptor.sql=trace
   
+  kafka:
+    bootstrap-servers: localhost:9092
+  
   redis:
       host: localhost
       port: 6379
